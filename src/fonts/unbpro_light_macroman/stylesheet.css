@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'unb_prolight';
+    src: url('unb_pro_light-webfont.eot');
+    src: url('unb_pro_light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('unb_pro_light-webfont.woff2') format('woff2'),
+         url('unb_pro_light-webfont.woff') format('woff'),
+         url('unb_pro_light-webfont.ttf') format('truetype'),
+         url('unb_pro_light-webfont.svg#unb_prolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
