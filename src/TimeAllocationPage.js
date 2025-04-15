@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from './Button'
 import { formatTotalTime } from './utils/time'
+import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
 function TimeAllocationPage({ totalHours, allocatedTime, setAllocatedTime, confirmHours }) {
   const [hoursSet, setHoursSet] = React.useState(totalHours)
@@ -17,35 +18,70 @@ function TimeAllocationPage({ totalHours, allocatedTime, setAllocatedTime, confi
     )
     setAllocatedTime(updatedAnswer)
   }
+  console.log((parseFloat((hoursSet / totalHours) * 100).toFixed(0)))
   const diffPercent = ((totalHours - hoursSet) / totalHours) * 100;
   const colorClass = diffPercent > 0 ? 'text-green-500' : 'text-red-500'; 
 
   return (
-    <div className="w-full lg:w-1/3 m-auto flex items-center flex-col justify-start">
-        <div className="text-2xl h-[9vh] border-b w-10/12 justify-center flex items-center">
+    <div className="w-[375px] m-auto flex items-center flex-col justify-start h-[100%] overflow-y-scroll">
+        <div className="text-4xl font-bold my-4 h-[9vh] border-b w-10/12 justify-center flex items-center">
           <div>Allocated time</div>
         </div>
-        <div className="h-[70vh] overflow-y-scroll w-full py-2">
+        <div className="w-11/12 md:w-10/12 py-2 grid grid-cols-2">
         {allocatedTime.map((phase) => (
-          <div key={phase.name} className="flex flex-col items-center">
-            <label className="font-semibold">{phase.name}</label>
-            <div className="text-xs">{formatTotalTime(phase.value * totalHours)}</div>
-            <input type="range" className="rangeInput" value={phase.value} min={0} step={0.01} max={1} onChange={(event) => handleChange(event, phase)}>
-            </input>
-            <div className="w-1/3 text-gray-500 text-sm">{(phase.value * 100).toFixed(0)}%</div>
+          <div key={phase.name} className="flex justify-start items-center my-3 rounded-xl m-1 p-1 shadow-sm relative">
+            <div className="text-2xl relative flex justify-center items-center mr-2">
+              <div className="x-0">
+              <CountdownCircleTimer
+                key={hoursSet}
+                isPlaying={false}
+                size="35"
+                strokeWidth={6}
+                duration={totalHours}
+                initialRemainingTime={(phase.value * totalHours)}
+                colors={['#d9d9d9']}
+                trailColor={"#d9d9d980"}
+              >
+              </CountdownCircleTimer>
+            </div>
+            <div className="x-10 absolute">{phase.icon}</div>
+            </div>
+            <div>
+              <div className="flex justify-between items-center">
+                <label className="font-semibold text-xs">{phase.name}</label>
+                <div className="text-gray-500 text-xs absolute right-1">{(phase.value * 100).toFixed(0)}%</div>
+              </div>
+              <div className="text-[10px]">{formatTotalTime(phase.value * totalHours)}</div>
+              <input type="range" className="rangeInput" value={phase.value} min={0} step={0.01} max={1} onChange={(event) => handleChange(event, phase)}>
+              </input>
+            </div>
           </div>
         ))}
         </div>
-        <div className="text-center h-[8vh] flex flex-col justify-center">
-          <div>Total time: {formatTotalTime(hoursSet)}</div>
-          {hoursSet.toFixed(2) !== totalHours?.toFixed(2) && (() => {
-            return <div className={colorClass}>
-              {`${diffPercent.toFixed(2) > 0 ? '+' : ''}${diffPercent.toFixed(0)}%`}
-            </div>;
-          })()}
+        <div className="w-10/12 py-2 flex justify-center items-center text-center">
+          <div className="w-1/2">
+            <div className="font-semibold">Total time:</div>
+            <div className="pt-2">{formatTotalTime(hoursSet)}</div>
+          </div>
+          <div className="relative flex justify-center items-center w-1/2">
+            <CountdownCircleTimer
+              key={hoursSet}
+              isPlaying={false}
+              size="70"
+              strokeWidth={10}
+              duration={totalHours}
+              initialRemainingTime={hoursSet}
+              colors={[`${diffPercent > 0 ? '#78bf86' : 'red'}`]}
+                trailColor={"#d9d9d980"}
+            >
+            </CountdownCircleTimer>
+            <div className={`absolute font-semibold ${colorClass}`}>
+              {`${((hoursSet / totalHours) * 100).toFixed(0)}%`}
+            </div>
+          </div>
         </div>
-        <div className="h-[11vh] flex items-center">
-          <Button text="Begin" onClick={confirmHours} className="m-4" disabled={diffPercent.toFixed(0) < 0}/>
+        <div className="h-[11vh] w-11/12 flex items-center">
+          <Button text="Begin" onClick={confirmHours} classes="my-4 w-full" disabled={diffPercent.toFixed(0) < 0}/>
         </div>
     </div>
   )

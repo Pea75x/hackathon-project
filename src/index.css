@@ -26,6 +26,7 @@ body {
   outline: none;
   overflow: hidden;
   border-radius: 16px;
+  width: 90px;
 }
 
 .rangeInput::-webkit-slider-runnable-track {

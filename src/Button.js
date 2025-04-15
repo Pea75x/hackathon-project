@@ -1,12 +1,9 @@
 import React from 'react'
 
-function Button({ text, onClick, disabled }) {
-  React.useEffect(() => {
-    console.log(disabled)
-  }, [disabled])
+function Button({ text, onClick, disabled, classes }) {
   return (
     <button 
-      className={`p-3 border rounded-lg hover:bg-white text-xl ${disabled ? 'bg-gray-200 text-gray-500' : 'bg-[#68a4ac]'}`}
+      className={`p-3 border rounded-lg hover:bg-white text-xl ${disabled ? 'bg-gray-200 text-gray-500' : 'bg-[#68a4ac]'} ${classes}`}
       onClick={onClick}
       disabled={disabled}>
       {text}
