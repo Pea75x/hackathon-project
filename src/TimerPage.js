@@ -19,23 +19,23 @@ function TimerPage({allocatedTime, totalHours, moveToNextTimer}) {
   React.useEffect(() => {
     if (remainingTime === null) return;
 
-    if (remainingTime < ((allocatedTime / 2) - 5) && remainingTime > ((allocatedTime / 2) + 5)) {
-      setShowWarning("half")
-    } else if (remainingTime < 300 && remainingTime > 0 && !showWarning) {
-      setShowWarning("five")
-    } else if (remainingTime > 1800 && remainingTime < 1860 && !showWarning) {
-      setShowWarning("thirty")
+    if (remainingTime > ((duration / 2).toFixed(0) - 5) && remainingTime < (parseFloat(duration).toFixed(0) / 2) + 5) {
+      (showWarning !== "half") && setShowWarning("half")
+    } else if (remainingTime < 300) {
+      (showWarning !== "five") && setShowWarning("five");
+    } else if (remainingTime > 1800 && remainingTime < 1860) {
+      (showWarning !== "thirty") && setShowWarning("thirty")
     } else {
-      setShowWarning && setShowWarning(false)
+      showWarning && setShowWarning(false)
     }
-  }, [remainingTime])
+  }, [remainingTime, showWarning])
   
   return (
     <div className="h-full w-full flex justify-center items-center flex-col">
       <div className="flex items-center w-full justify-center my-6 relative">
         <div className="text-3xl mx-4 my-4">{allocatedTime.name}</div>
         <div className="group">
-          <img src={information} width="20px" className=""/>
+          <img src={information} width="20px" alt="information"/>
           <div className="absolute my-3 w-full left-0 flex justify-center text-center opacity-0 group-hover:opacity-100">
             <div className="lg:w-1/3">{allocatedTime.info}</div>
           </div>

@@ -4,6 +4,8 @@ import StartingPage from './StartingPage'
 import TimeAllocationPage from './TimeAllocationPage'
 import { motion } from 'framer-motion';
 import TimerPage from './TimerPage'
+import CompletedPage from './CompletedPage'
+import Countdown from'./Countdown'
 
 function App() {
   const [page, setPage] = React.useState(0);
@@ -49,9 +51,9 @@ function App() {
   const [allocatedTime, setAllocatedTime] = React.useState(phases);
 
   return (
-    <div className="w-full h-screen">
+    <div className="w-full h-screen overflow-hidden">
       <motion.div
-        className="flex w-[900vw] h-screen"
+        className="flex w-[1100vw] h-screen"
         animate={{ x: `-${page * 100}vw` }}
         transition={{ type: 'spring', stiffness: 60 }}
       >
@@ -61,8 +63,11 @@ function App() {
         <div className="w-full h-[100%]">
           <TimeAllocationPage totalHours={totalHours} allocatedTime={allocatedTime} setAllocatedTime={setAllocatedTime} confirmHours={() => setPage(2)}/>
         </div>
+        <div className="w-full h-[100%]">
+          <Countdown moveToNextTimer={() => setPage(3)}/>
+        </div>
         {allocatedTime && allocatedTime.map((phase, index) => {
-          const currentPage = index + 2;
+          const currentPage = index + 3;
           return (
             <div className="w-full h-screen" key={phase.name}>
               {page === currentPage && (
@@ -75,6 +80,9 @@ function App() {
             </div>
           );
         })}
+        <div className="w-full h-[100%]">
+          <CompletedPage />
+        </div>
       </motion.div>
     </div>
   );
