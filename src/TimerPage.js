@@ -28,7 +28,7 @@ function TimerPage({allocatedTime, totalHours, moveToNextTimer}) {
     } else {
       showWarning && setShowWarning(false)
     }
-  }, [remainingTime, showWarning])
+  }, [remainingTime, showWarning, duration])
   
   return (
     <div className="h-full w-full flex justify-center items-center flex-col">
