@@ -1,8 +1,8 @@
 import React from 'react'
 import Button from './Button'
+import titlepage from './titlepage.webp'
 
 function StartingPage({hours, setHours, onNext}) {
-
   return (
     <div className="h-screen w-full lg:w-1/3 m-auto flex justify-center items-center">
       <div className="w-11/12 flex justify-around flex-col items-center h-[70%]">
