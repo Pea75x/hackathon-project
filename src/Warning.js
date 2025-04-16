@@ -17,7 +17,7 @@ function Warning({ warning, remainingTime }) {
     }
   }
   return (
-    <div className={`${warningType[warning].class} absolute top-15 border rounded-lg w-10/12 lg:w-1/4 h-[50px] flex justify-center items-center`}>
+    <div className={`${warningType[warning].class} absolute border rounded-lg w-10/12 h-[50px] flex justify-center items-center`}>
       {warningType[warning].text}
     </div>
   )

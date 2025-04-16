@@ -17,43 +17,46 @@ function App() {
     {
       icon: "❤️",
       name: "Empathise",
-      value: 1 / 7,
-      info: "Research Your Users' Needs"
+      value: 1 / 10,
+      info: "Research Your Users' Needs",
+      tasks: [
+        "for task 1 you need to complete this...", "task 2 means you need to do this"
+      ]
     }, 
     {
       icon: "🎯",
       name: "Define",
-      value: 1 / 7,
+      value: 1 / 10,
       info: "State Your Users' Needs and Problems"
     },
     {
       icon: "💡",
       name: "Ideate",
-      value: 1 / 7,
+      value: 1 / 10,
       info: "Challenge Assumptions and Create Ideas"
     },
     {
       icon: "🛠️",
       name: "Prototype",
-      value: 1 / 7,
+      value: 7 / 20,
       info: "Start to Create Solutions"
     },
     {
       icon: "❓",
       name: "Test",
-      value: 1 / 7,
+      value: 3 / 20,
       info: "Try Your Solutions Out"
     },
     {
       icon: "📃",
       name: "Submission",
-      value: 1 / 7,
+      value: 3 / 20,
       info: "Demonstrate your understanding of the process and the rationale behind your design choices"
     },
     {
       icon: "🗣️",
       name: "Practice",
-      value: 1 / 7,
+      value: 1 / 20,
       info: "Rehearse your presentation"
     }
   ];
@@ -90,6 +93,7 @@ function App() {
                   totalHours={totalHours}
                   index={index + 1}
                   moveToNextTimer={() => moveToNextTimer(currentPage + 1)}
+                  goBack={() => setPage(1)}
                 />
               )}
             </div>
