@@ -52,17 +52,20 @@ function TimerPage({allocatedTime, totalHours, moveToNextTimer, index, goBack}) 
         <div className="text-3xl mx-4 my-4">{allocatedTime.name}</div>
         <div className="group">
           <img src={information} width="30px" alt="information"/>
-          <div className="text-[#ffcc6c] absolute mt-1 mb-4 w-full left-0 flex justify-center text-center opacity-0 group-hover:opacity-100">
+          <div className="text-[#ffcc6c] absolute mt-1 w-full left-0 flex justify-center text-center opacity-0 group-hover:opacity-100">
             <div className="">{allocatedTime.info}</div>
           </div>
         </div>
       </div>
-      <div className="text-center text-[#ed5b2c]">
-        {allocatedTime.tasks && allocatedTime.tasks.map((task) => (
-          <div key={task}>
-            <input type="checkbox" id="task1" className="accent-[#ed5b2c] rounded-full border-[#ed5b2c] w-4 h-4"/> {task}
-          </div>
-        ))}
+      <div className="text-[#ed5b2c] w-11/12">
+        <div className="text-sm py-2">{allocatedTime.moreInfo}</div>
+        <div className="text-xs">
+          {allocatedTime.tasks && allocatedTime.tasks.map((task) => (
+            <div key={task}>
+              <input type="checkbox" id="task1" className="accent-[#ed5b2c] rounded-full border-[#ed5b2c] w-4 h-4"/> {task}
+            </div>
+          ))}
+        </div>
       </div>
       <div className="my-6 w-full text-center items-center justify-center flex">
         <CountdownCircleTimer

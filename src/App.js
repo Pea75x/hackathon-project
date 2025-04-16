@@ -8,58 +8,12 @@ import CompletedPage from './CompletedPage'
 import Countdown from'./Countdown'
 import useSound from 'use-sound';
 import notificationSound from './fonts/notification-alert.mp3'; 
+import phases from './utils/phases.json'
 
 function App() {
   const [page, setPage] = React.useState(0);
   const [totalHours, setTotalHours] = React.useState(5)
   const [playNotification] = useSound(notificationSound);
-  const phases = [
-    {
-      icon: "❤️",
-      name: "Empathise",
-      value: 1 / 10,
-      info: "Research Your Users' Needs",
-      tasks: [
-        "for task 1 you need to complete this...", "task 2 means you need to do this"
-      ]
-    }, 
-    {
-      icon: "🎯",
-      name: "Define",
-      value: 1 / 10,
-      info: "State Your Users' Needs and Problems"
-    },
-    {
-      icon: "💡",
-      name: "Ideate",
-      value: 1 / 10,
-      info: "Challenge Assumptions and Create Ideas"
-    },
-    {
-      icon: "🛠️",
-      name: "Prototype",
-      value: 7 / 20,
-      info: "Start to Create Solutions"
-    },
-    {
-      icon: "❓",
-      name: "Test",
-      value: 3 / 20,
-      info: "Try Your Solutions Out"
-    },
-    {
-      icon: "📃",
-      name: "Submission",
-      value: 3 / 20,
-      info: "Demonstrate your understanding of the process and the rationale behind your design choices"
-    },
-    {
-      icon: "🗣️",
-      name: "Practice",
-      value: 1 / 20,
-      info: "Rehearse your presentation"
-    }
-  ];
   const [allocatedTime, setAllocatedTime] = React.useState(phases);
 
   function moveToNextTimer(page) {

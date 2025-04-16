@@ -1,0 +1,61 @@
+[
+  {
+    "icon": "❤️",
+    "name": "Empathise",
+    "value": 0.1,
+    "info": "Start with people, not products.",
+    "moreInfo": "Gain deep insight into users' needs and motivations.",
+    "tasks": [
+      "Talk to at least 3 target users", "Ask open-ended, non-leading questions", "Validate assumptions with feedback"
+    ]
+  }, 
+  {
+    "icon": "🎯",
+    "name": "Define",
+    "value": 0.1,
+    "info": "Focus your chaos into a clear challenge",
+    "moreInfo": "Transform your research into a concise problem statement.",
+    "tasks": [ "[User] experiences [problem] when they [action] in [this context]. This is a problem because [impact on the user]"]
+
+  },
+  {
+    "icon": "💡",
+    "name": "Ideate",
+    "value": 0.1,
+    "info": "Wild quantity first, wise quality follows",
+    "moreInfo": "Generate a broad range of potential solutions without judgment",
+    "tasks": ["Encourage wild ideas", "Use “Yes, and…” to expand ideas building on teammates' suggestions", "Vote on top 3 concepts and refine chosen ideas only"]
+  },
+  {
+    "icon": "🛠️",
+    "name": "Prototype",
+    "value": 0.35,
+    "info": "Done is better than perfect.",
+    "moreInfo": "Create a tangible representation to test core assumptions",
+    "tasks": ["Focus on key functionality", "Pick the fastest tool, using paper or click‑through mocks", "Stick to your committed scope "]
+  },
+  {
+    "icon": "❓",
+    "name": "Test",
+    "value": 0.15,
+    "info": "Fail fast, then fix.",
+    "moreInfo": "Gather user input to validate and refine your prototype.",
+    "tasks": ["Share early and often to iterate on feedback", "Test with real users and ask them to think aloud", "Ask “How would you improve?”"]
+  },
+  {
+    "icon": "📃",
+    "name": "Submission",
+    "value": 0.15,
+    "info": "Complete every detail before you click 'Submit'",
+    "moreInfo": "Finalise deliverables and ensure compliance with all requirements.",
+    "tasks": ["Review hackathon criteria, confirming file formats and sizes", "Proofread all text, validate links and repos", "Submit 5 minutes early"]
+  },
+  {
+    "icon": "🗣️",
+    "name": "Practice",
+    "value": 0.05,
+    "info": "Rehearse until it feels like second nature.",
+    "moreInfo": "Rehearse your presentation to deliver a clear and confident pitch",
+    "tasks": ["Time your full run-through by recording and reviewing yourself", "Practice speaker transitions and plan for tech glitches", "Prep answers to FAQs"]
+  }
+]
