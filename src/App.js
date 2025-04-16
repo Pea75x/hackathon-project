@@ -6,10 +6,13 @@ import { motion } from 'framer-motion';
 import TimerPage from './TimerPage'
 import CompletedPage from './CompletedPage'
 import Countdown from'./Countdown'
+import useSound from 'use-sound';
+import notificationSound from './fonts/notification-alert.mp3'; 
 
 function App() {
   const [page, setPage] = React.useState(0);
   const [totalHours, setTotalHours] = React.useState(5)
+  const [playNotification] = useSound(notificationSound);
   const phases = [
     {
       icon: "❤️",
@@ -54,8 +57,12 @@ function App() {
       info: "Rehearse your presentation"
     }
   ];
-
   const [allocatedTime, setAllocatedTime] = React.useState(phases);
+
+  function moveToNextTimer(page) {
+    setPage(page)
+    playNotification()
+  }
 
   return (
     <div className="w-full h-screen overflow-hidden">
@@ -71,7 +78,7 @@ function App() {
           <TimeAllocationPage totalHours={totalHours} allocatedTime={allocatedTime} setAllocatedTime={setAllocatedTime} confirmHours={() => setPage(2)}/>
         </div>
         <div className="w-full h-full">
-          <Countdown moveToNextTimer={() => setPage(3)}/>
+          <Countdown moveToNextTimer={() => setPage(3)} goBack={() => setPage(1)}/>
         </div>
         {allocatedTime && allocatedTime.map((phase, index) => {
           const currentPage = index + 3;
@@ -81,7 +88,8 @@ function App() {
                 <TimerPage
                   allocatedTime={phase}
                   totalHours={totalHours}
-                  moveToNextTimer={() => setPage(currentPage + 1)}
+                  index={index + 1}
+                  moveToNextTimer={() => moveToNextTimer(currentPage + 1)}
                 />
               )}
             </div>

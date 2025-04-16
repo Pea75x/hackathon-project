@@ -1,11 +1,14 @@
 import React from 'react'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+import useSound from 'use-sound';
+import countdownSound from './fonts/countdown.mp3'; 
 
-function Countdown({ moveToNextTimer }) {
+function Countdown({ moveToNextTimer, goBack }) {
   const [playing, setPlaying] = React.useState(false)
   const [showBegin, setShowBegin] = React.useState(false)
   const [isPulsing, setIsPulsing] = React.useState(false)
-  
+  const [playCountdown, { sound }] = useSound(countdownSound, { interrupt: true });
+
   function finishCountdown() {
     setShowBegin(true)
     setIsPulsing(true)
@@ -16,14 +19,27 @@ function Countdown({ moveToNextTimer }) {
     }, 2000)
   }
 
+  function startCountdown() {
+    if (playing) {
+      sound.pause();
+    } else {
+      if (sound) {
+        sound.play(); 
+      } else {
+        playCountdown(); 
+      }
+    }
+    setPlaying(!playing);
+  }
+
   return (
     <div className="h-full w-full flex justify-center items-center flex-col">
       <div className="flex items-center w-full justify-center my-6 relative">
         Ready to begin?
       </div>
       <div 
-        className={`my-6 relative w-full text-center items-center flex-col flex ${isPulsing ? 'animate-pulse' : ''}`}
-        onClick={() => setPlaying(!playing)}>
+        className={`text-2xl font-semibold hover:scale-110 my-6 relative w-full text-center items-center flex-col flex ${isPulsing ? 'animate-pulse' : ''}`}
+        onClick={startCountdown}>
         <CountdownCircleTimer
           isPlaying={playing}
           duration={3}
@@ -37,6 +53,10 @@ function Countdown({ moveToNextTimer }) {
             return playing ? remainingTime : "Start"}
             }
         </CountdownCircleTimer>
+      </div>
+      <div className="text-center">
+        <div className="text-xs">Changed your mind?</div>
+        <div className="text-gray-500 underline font-semibold" onClick={goBack}>Cancel</div>
       </div>
     </div>
   )

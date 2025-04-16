@@ -3,8 +3,9 @@ import { formatMinutesAndSeconds } from './utils/time'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import information from './information.png'
 import Warning from './Warning'
+import Button from './Button'
 
-function TimerPage({allocatedTime, totalHours, moveToNextTimer}) {
+function TimerPage({allocatedTime, totalHours, moveToNextTimer, index}) {
   const [duration, setDuration] = React.useState(0);
   const [remainingTime, setRemainingTime] = React.useState(null);
   const [showWarning, setShowWarning] = React.useState(false)
@@ -31,7 +32,7 @@ function TimerPage({allocatedTime, totalHours, moveToNextTimer}) {
   }, [remainingTime, showWarning, duration])
   
   return (
-    <div className="h-full w-full flex justify-center items-center flex-col">
+    <div className="h-full w-full flex justify-around items-center flex-col">
       <div className="flex items-center w-full justify-center my-6 relative">
         <div className="text-3xl mx-4 my-4">{allocatedTime.name}</div>
         <div className="group">
@@ -58,6 +59,8 @@ function TimerPage({allocatedTime, totalHours, moveToNextTimer}) {
         </CountdownCircleTimer>
         {showWarning && <Warning warning={showWarning} remainingTime={remainingTime}/>}
       </div>
+      <div>Task {index}/7</div>
+      <Button text="Pause" className="my-4"/>
     </div>
   )
 }
