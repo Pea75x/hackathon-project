@@ -47,22 +47,22 @@ function TimerPage({allocatedTime, totalHours, moveToNextTimer, index, goBack}) 
 
   return (
     <div className="h-full w-full md:w-[375px] m-auto flex justify-around items-center flex-col bg-[#f8f4ec] relative">
-      <img src={logo} alt="hacktrack-logo" width="90%" className="pt-2"/>
-      <div className="flex items-center w-full justify-center h-[50px] mb-6 relative text-[#ed5b2c]">
-        <div className="text-3xl mx-4 my-4">{allocatedTime.name}</div>
+      <img src={logo} alt="hacktrack-logo" width="80%" className="pt-2"/>
+      <div className="flex items-center w-full justify-center h-[50px] relative text-[#ed5b2c]">
+        <div className="text-4xl mx-4 my-4">{allocatedTime.name}</div>
         <div className="group">
           <img src={information} width="30px" alt="information"/>
-          <div className="text-[#ffcc6c] absolute mt-1 w-full left-0 flex justify-center text-center opacity-0 group-hover:opacity-100">
-            <div className="">{allocatedTime.info}</div>
+          <div className="text-[#ffcc6c] absolute mt-1 w-full left-0 flex justify-center text-center group-hover:opacity-100">
+            <div className="font-semibold">{allocatedTime.info}</div>
           </div>
         </div>
       </div>
-      <div className="text-[#ed5b2c] w-11/12">
+      <div className="text-[#ed5b2c] w-11/12 text-center">
         <div className="text-sm py-2">{allocatedTime.moreInfo}</div>
         <div className="text-xs">
           {allocatedTime.tasks && allocatedTime.tasks.map((task) => (
             <div key={task}>
-              <input type="checkbox" id="task1" className="accent-[#ed5b2c] rounded-full border-[#ed5b2c] w-4 h-4"/> {task}
+              {task}
             </div>
           ))}
         </div>
