@@ -1,15 +1,18 @@
 import React from 'react'
 import Button from './Button'
 import titlepage from './titlepage.webp'
+import logo from './logo.png'
 
 function StartingPage({hours, setHours, onNext}) {
   return (
-    <div className="h-screen w-full lg:w-1/3 m-auto flex justify-center items-center">
+    <div className="h-screen w-full lg:w-1/3 m-auto flex justify-center items-center bg-[#f8f4ec]">
       <div className="w-11/12 flex justify-around flex-col items-center h-[70%]">
+        <img src={logo} alt="hacktrack-logo" width="90%"/>
+
         <label className="text-2xl text-center">How many hours is your hackathon?</label>
         <input
           style={{lineHeight: "40px", verticalAlign: "text-bottom"}}
-          className="text-lg py-2 px-5 rounded-full w-full text-center rounded-full h-[50px] border"
+          className="text-lg py-2 px-5 rounded-full w-full text-center rounded-full h-[50px] bg-white/50 shadow-sm outline-[#3b8d84]"
           type="number"
           id="name"
           name="totalHours"
