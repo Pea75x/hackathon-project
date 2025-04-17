@@ -15,7 +15,7 @@
     "value": 0.1,
     "info": "\"Focus your chaos into a clear challenge\"",
     "moreInfo": "Transform your research into a concise problem statement.",
-    "tasks": [ "[User] experiences [problem] when they [action] in [this context]. This is a problem because [impact on the user]"]
+    "tasks": [ "Try this problem statement formula!", "[User] experiences [problem] when they [action] in [this context]. This is a problem because [impact on the user]"]
   },
   {
     "icon": "💡",
@@ -23,7 +23,7 @@
     "value": 0.1,
     "info": "\"Wild quantity first, wise quality follows.\"",
     "moreInfo": "Generate a broad range of potential solutions without judgment",
-    "tasks": ["Encourage wild ideas", "Use “Yes, and…” to expand ideas building on teammates' suggestions", "Vote on top 3 concepts and refine chosen ideas only"]
+    "tasks": ["Make sure you encourage big and wild ideas. Use “Yes, and…” to expand ideas building on teammates' suggestions.", "Don't forget to vote on top 3 concepts and refine chosen ideas only!"]
   },
   {
     "icon": "🛠️",

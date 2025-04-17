@@ -24,10 +24,10 @@ function TimerPage({allocatedTime, totalHours, moveToNextTimer, index, goBack}) 
   React.useEffect(() => {
     if (remainingTime === null) return;
 
-    if (remainingTime > ((duration / 2).toFixed(0) - 5) && remainingTime < (parseFloat(duration).toFixed(0) / 2) + 5) {
-      (showWarning !== "half") && setShowWarning("half")
-    } else if (remainingTime < 300) {
+    if (remainingTime < 300) {
       (showWarning !== "five") && setShowWarning("five");
+    } else if (remainingTime > ((duration / 2).toFixed(0) - 5) && remainingTime < (parseFloat(duration).toFixed(0) / 2) + 5) {
+      (showWarning !== "half") && setShowWarning("half")
     } else if (remainingTime > 1800 && remainingTime < 1860) {
       (showWarning !== "thirty") && setShowWarning("thirty")
     } else {
@@ -50,15 +50,15 @@ function TimerPage({allocatedTime, totalHours, moveToNextTimer, index, goBack}) 
       <img src={logo} alt="hacktrack-logo" width="80%" className="pt-2"/>
       <div className="flex flex-col items-center w-full justify-start relative text-[#ed5b2c] text-center">
         <div className="text-4xl">{allocatedTime.name}</div>
-        <div className="font-semibold text-[#ffcc6c]">{allocatedTime.info}</div>
+        <div className="font-semibold text-[#ffcc6c] mt-2">{allocatedTime.info}</div>
+        <div className="text-sm py-2">{allocatedTime.moreInfo}</div>
       </div>
       <div className="text-[#ed5b2c] w-11/12 text-center">
-        <div className="text-sm py-2">{allocatedTime.moreInfo}</div>
           <div className="group">
             <img src={information} width="30px" alt="information" className="absolute right-10 top-30"/> 
-            <div className="text-[#ffcc6c] border border-[#ffcc6c] text-sm bg-white absolute shadow-lg py-2 rounded-md mt-1 w-11/12 opacity-0 text-center group-hover:opacity-100 z-50">
+            <div className="flex flex-col text-[#ffcc6c] border border-[#ffcc6c] text-sm bg-white absolute shadow-lg py-2 rounded-md mt-1 w-11/12 opacity-0 text-center group-hover:opacity-100 z-50">
               {allocatedTime.tasks && allocatedTime.tasks.map((task) => (
-                <div key={task} className="p-1">
+                <div key={task} className="py-2 font-semibold">
                   {task}
                 </div>
               ))}
