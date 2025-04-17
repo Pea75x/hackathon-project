@@ -9,7 +9,7 @@ function Countdown({ moveToNextTimer, goBack }) {
   const [timerKey, setTimerKey] = React.useState(0)
   const [cantCancel, setCantCancel] = React.useState(false)
   const [playCountdown, { sound }] = useSound(countdownSound, { interrupt: true });
-
+  
   React.useEffect(() => {
     playCountdown();
   }, []);
@@ -19,6 +19,10 @@ function Countdown({ moveToNextTimer, goBack }) {
     setShowBegin(true)
 
     setTimeout(() => {
+      setShowBegin(false)
+      setPlaying(false)
+      setCantCancel(false)
+      setTimerKey(prev => prev + 1)
       moveToNextTimer()
     }, 2000)
   }

@@ -7,11 +7,9 @@ import Button from './Button'
 import logo from './logo.png'
 import Modal from './Modal'
 
-function TimerPage({allocatedTime, totalHours, moveToNextTimer, index, goBack}) {
+function TimerPage({allocatedTime, totalHours, moveToNextTimer, index, goBack, remainingTime, setRemainingTime, isPlaying, setIsPlaying}) {
   const [duration, setDuration] = React.useState(0);
-  const [remainingTime, setRemainingTime] = React.useState(null);
   const [showWarning, setShowWarning] = React.useState(false)
-  const [isPlaying, setIsPlaying] = React.useState(true);
   const [modalOpen, setModalOpen] = React.useState(false);
 
   React.useEffect(() => {
@@ -40,8 +38,8 @@ function TimerPage({allocatedTime, totalHours, moveToNextTimer, index, goBack}) 
     return Math.round(Math.cos((i - center) * (Math.PI / 6)) * 10);
   };
 
-  function toggleModal() {
-    setIsPlaying(!isPlaying)
+  function toggleModal(play) {
+    setIsPlaying(play)
     setModalOpen(!modalOpen)
   }
 
@@ -96,12 +94,12 @@ function TimerPage({allocatedTime, totalHours, moveToNextTimer, index, goBack}) 
         />
         <Button 
           text="Cancel" 
-          onClick={toggleModal} 
+          onClick={() => toggleModal(false)} 
           classes="w-5/12 ml-2"
           buttonType="inverted"
         />
       </div>
-      {modalOpen && <Modal text="Are you sure you want cancel?" onConfirm={goBack} onCancel={toggleModal} />}
+      {modalOpen && <Modal text="Are you sure you want cancel?" onConfirm={goBack} onCancel={() =>toggleModal(true)} />}
     </div>
   )
 }

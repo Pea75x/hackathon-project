@@ -15,11 +15,70 @@ function App() {
   const [totalHours, setTotalHours] = React.useState(5)
   const [playNotification] = useSound(notificationSound);
   const [allocatedTime, setAllocatedTime] = React.useState(phases);
+  const [remainingTime, setRemainingTime] = React.useState(null);
+  const [isPlaying, setIsPlaying] = React.useState(true);
 
   function moveToNextTimer(page) {
     setPage(page)
     playNotification()
   }
+
+  // const saveProgress = (data) => {
+  //   try {
+  //     localStorage.setItem("timerAppProgress", JSON.stringify(data))
+  //   } catch (e) {
+  //     console.error("Failed to save progress:", e)
+  //   }
+  // }
+
+  // React.useEffect(() => {
+  //   const handleBeforeUnload = () => {
+  //     saveProgress({
+  //       page,
+  //       totalHours,
+  //       allocatedTime,
+  //       remainingTime,
+  //       lastSaved: Date.now()
+  //     })
+  //   }
+  //   window.addEventListener("beforeunload", handleBeforeUnload)
+  //   return () => window.removeEventListener("beforeunload", handleBeforeUnload)
+  // }, [page, totalHours, allocatedTime])
+
+  // const loadProgress = () => {
+  //   try {
+  //     const stored = localStorage.getItem("timerAppProgress")
+
+  //     if (!stored) return null
+  //     const data = JSON.parse(stored)
+
+  //     // Optional: validate structure
+  //     if (
+  //       typeof data.page === "number" &&
+  //       typeof data.totalHours === "number" &&
+  //       typeof data.allocatedTime === "object"
+  //     ) {
+  //       return data
+  //     }
+
+  //     return null
+  //   } catch (e) {
+  //     console.error("Failed to load progress:", e)
+  //     return null
+  //   }
+  // }
+
+  // React.useEffect(() => {
+  //   const saved = loadProgress()
+
+  //   if (saved) {
+  //     setPage(saved.page)
+  //     setTotalHours(saved.totalHours)
+  //     setAllocatedTime(saved.allocatedTime)
+  //     setRemainingTime(saved.remainingTime)
+  //     setIsPlaying(false)
+  //   }
+  // }, [])
 
   return (
     <div className="w-full h-screen overflow-hidden">
@@ -35,7 +94,7 @@ function App() {
           <TimeAllocationPage totalHours={totalHours} allocatedTime={allocatedTime} setAllocatedTime={setAllocatedTime} confirmHours={() => setPage(2)}/>
         </div>
         <div className="w-full h-full">
-          <Countdown moveToNextTimer={() => setPage(3)} goBack={() => setPage(1)}/>
+          <Countdown moveToNextTimer={() => setPage(3)} goBack={() => setPage(0)}/>
         </div>
         {allocatedTime && allocatedTime.map((phase, index) => {
           const currentPage = index + 3;
@@ -47,7 +106,11 @@ function App() {
                   totalHours={totalHours}
                   index={index + 1}
                   moveToNextTimer={() => moveToNextTimer(currentPage + 1)}
-                  goBack={() => setPage(1)}
+                  goBack={() => setPage(0)}
+                  remainingTime={remainingTime}
+                  setRemainingTime={setRemainingTime}
+                  isPlaying={isPlaying}
+                  setIsPlaying={setIsPlaying}
                 />
               )}
             </div>

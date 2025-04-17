@@ -59,10 +59,9 @@ function TimeAllocationPage({ totalHours, allocatedTime, setAllocatedTime, confi
                       min="0"
                       max="100"
                       onChange={(e) => {
-                        const percent = parseFloat(e.target.value)
-                        if (!isNaN(percent)) {
-                          handleChange(percent / 100, phase)
-                        }
+                        let percent = parseFloat(e.target.value)
+                        if (isNaN(percent) || percent > 100 || percent < 0) return
+                        handleChange(percent / 100, phase)
                       }}
                     />
                     %
