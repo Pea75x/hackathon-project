@@ -10,6 +10,10 @@ function Countdown({ moveToNextTimer, goBack }) {
   const [cantCancel, setCantCancel] = React.useState(false)
   const [playCountdown, { sound }] = useSound(countdownSound, { interrupt: true });
 
+  React.useEffect(() => {
+    playCountdown();
+  }, []);
+
   function finishCountdown() {
     setCantCancel(true)
     setShowBegin(true)
@@ -34,7 +38,8 @@ function Countdown({ moveToNextTimer, goBack }) {
 
   function clickBack() {
     setPlaying(false)
-    sound.pause()
+    sound.stop();       
+    sound.seek(0);      
     setTimerKey(prev => prev + 1)
     goBack()
   }
@@ -64,7 +69,7 @@ function Countdown({ moveToNextTimer, goBack }) {
       </div>
       <div className="text-center">
         <div className="text-xs">Changed your mind?</div>
-        <button className="text-gray-500 underline font-semibold" onClick={clickBack} disabled={cantCancel}>Cancel</button>
+        <button className={`underline font-semibold ${cantCancel ? 'text-gray-300' : 'text-gray-500'}`} onClick={clickBack} disabled={cantCancel}>Cancel</button>
       </div>
     </div>
   )
