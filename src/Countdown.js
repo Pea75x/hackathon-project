@@ -6,16 +6,15 @@ import countdownSound from './fonts/countdown.mp3';
 function Countdown({ moveToNextTimer, goBack }) {
   const [playing, setPlaying] = React.useState(false)
   const [showBegin, setShowBegin] = React.useState(false)
-  const [isPulsing, setIsPulsing] = React.useState(false)
   const [timerKey, setTimerKey] = React.useState(0)
+  const [cantCancel, setCantCancel] = React.useState(false)
   const [playCountdown, { sound }] = useSound(countdownSound, { interrupt: true });
 
   function finishCountdown() {
+    setCantCancel(true)
     setShowBegin(true)
-    setIsPulsing(true)
 
     setTimeout(() => {
-      setIsPulsing(false)
       moveToNextTimer()
     }, 2000)
   }
@@ -46,7 +45,7 @@ function Countdown({ moveToNextTimer, goBack }) {
         Ready to begin?
       </div>
       <div 
-        className={`text-2xl font-semibold hover:scale-110 my-6 relative w-full text-center items-center flex-col flex ${isPulsing ? 'animate-pulse' : ''}`}
+        className={`text-2xl font-semibold hover:scale-110 my-6 relative w-full text-center items-center flex-col flex ${cantCancel ? 'animate-pulse' : ''}`}
         onClick={startCountdown}>
         <CountdownCircleTimer
           key={timerKey}
@@ -65,7 +64,7 @@ function Countdown({ moveToNextTimer, goBack }) {
       </div>
       <div className="text-center">
         <div className="text-xs">Changed your mind?</div>
-        <div className="text-gray-500 underline font-semibold" onClick={clickBack}>Cancel</div>
+        <button className="text-gray-500 underline font-semibold" onClick={clickBack} disabled={cantCancel}>Cancel</button>
       </div>
     </div>
   )
