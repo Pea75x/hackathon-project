@@ -41,7 +41,7 @@ function Countdown({ moveToNextTimer, goBack }) {
   }
 
   return (
-    <div className="h-full w-full flex justify-center items-center flex-col">
+    <div className="h-full w-full md:w-[375px] m-auto bg-[#f8f4ec] flex justify-center items-center flex-col">
       <div className="flex items-center w-full justify-center my-6 relative">
         Ready to begin?
       </div>
