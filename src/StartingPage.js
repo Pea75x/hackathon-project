@@ -3,6 +3,10 @@ import Button from './Button'
 import logo from './logo.png'
 
 function StartingPage({hours, setHours, onNext}) {
+  const handleChange = (event) => {
+    const value = event.target.value;
+    value === "" ? setHours("") : setHours(parseFloat(value))
+  };
   return (
     <div className="w-full md:w-[375px] h-screen m-auto flex justify-center items-center bg-[#f8f4ec]">
       <div className="w-11/12 flex justify-around flex-col items-center h-[70%]">
@@ -14,11 +18,15 @@ function StartingPage({hours, setHours, onNext}) {
           type="number"
           id="name"
           name="totalHours"
-          value={hours}
-          onChange={(event) => setHours(parseFloat(event.target.value) || 0)}
+          value={hours === "" ? "" : hours}
+          onChange={handleChange}
           required
           size="10" />
-        <Button text="confirm" onClick={onNext} disabled={hours === 0} buttonType={hours === 0 ? "disabled": "classic"}/>
+        <Button 
+          text="confirm"
+          onClick={onNext}
+          disabled={hours === "" || hours <= 0}
+          buttonType={hours === "" || hours <= 0 ? "disabled" : "classic"}/>
       </div>
     </div>
   )
