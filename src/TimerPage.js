@@ -43,6 +43,11 @@ function TimerPage({allocatedTime, totalHours, moveToNextTimer, index, goBack, r
     setModalOpen(!modalOpen)
   }
 
+  function cancel() { 
+    setIsPlaying(true)
+    goBack()
+  }
+
   return (
     <div className="h-full w-full md:w-[375px] m-auto flex justify-around items-center flex-col bg-[#f8f4ec] relative">
       <img src={logo} alt="hacktrack-logo" width="80%" className="pt-2"/>
@@ -99,7 +104,7 @@ function TimerPage({allocatedTime, totalHours, moveToNextTimer, index, goBack, r
           buttonType="inverted"
         />
       </div>
-      {modalOpen && <Modal text="Are you sure you want cancel?" onConfirm={goBack} onCancel={() =>toggleModal(true)} />}
+      {modalOpen && <Modal text="Are you sure you want cancel?" onConfirm={cancel} onCancel={() =>toggleModal(true)} />}
     </div>
   )
 }
