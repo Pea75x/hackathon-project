@@ -52,14 +52,11 @@ function TimerPage({allocatedTime, totalHours, moveToNextTimer, index, goBack, r
     <div className="h-full w-full md:w-[375px] m-auto flex justify-around items-center flex-col bg-[#f8f4ec] relative">
       <img src={logo} alt="hacktrack-logo" width="80%" className="pt-2"/>
       <div className="flex flex-col items-center w-full justify-start relative text-[#ed5b2c] text-center">
-        <div className="text-4xl">{allocatedTime.name}</div>
-        <div className="font-semibold text-[#ffcc6c] mt-2">{allocatedTime.info}</div>
-        <div className="text-sm py-2">{allocatedTime.moreInfo}</div>
-      </div>
-      <div className="text-[#ed5b2c] w-11/12 text-center">
+        <div className="flex justify-center">
+          <div className="text-4xl">{allocatedTime.name}</div>
           <div className="group">
-            <img src={information} width="30px" alt="information" className="absolute right-10 top-30"/> 
-            <div className="flex flex-col text-[#ffcc6c] border border-[#ffcc6c] text-sm bg-white absolute shadow-lg py-2 rounded-md mt-1 w-11/12 opacity-0 text-center group-hover:opacity-100 z-50">
+            <img src={information} width="40px" alt="information" className="ml-2"/> 
+            <div className="left-4 top-35 flex flex-col text-[#ffcc6c] border border-[#ffcc6c] text-sm bg-white absolute shadow-lg py-2 rounded-md mt-1 w-11/12 opacity-0 text-center group-hover:opacity-100 z-50">
               {allocatedTime.tasks && allocatedTime.tasks.map((task) => (
                 <div key={task} className="py-2 font-semibold">
                   {task}
@@ -67,6 +64,12 @@ function TimerPage({allocatedTime, totalHours, moveToNextTimer, index, goBack, r
               ))}
             </div>
           </div>
+        </div>
+        <div className="font-semibold text-[#ffcc6c] mt-2">{allocatedTime.info}</div>
+        <div className="text-sm py-2">{allocatedTime.moreInfo}</div>
+      </div>
+      <div className="text-[#ed5b2c] w-11/12 text-center">
+          
       </div>
       <div className="my-6 w-full text-center items-center justify-center flex">
         <CountdownCircleTimer
