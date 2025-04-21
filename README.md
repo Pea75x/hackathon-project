@@ -1,70 +1,23 @@
-# Getting Started with Create React App
+# Hacktrack
+## Created for Hack Yeah! Hackathon
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Over 30% of hackathon participants are first-timers, with limitless potential but overwhelmed by the rapid pace and ambiguity. Juggling ideation and prototyping, testing and pitching - it's easy to fall into time traps.
+Time mismanagement is a silent killer of hackathon success. 82% of people report not using any time management strategy, even though effective planners are 53% more likely to succeed academically or professionally.
 
-## Available Scripts
+Enter hacktrack – your smart hackathon guide.
 
-In the project directory, you can run:
+hacktrack is a lightweight time coach built specifically for hackathon teams. Users input their total available time, and hacktrack intelligently suggests time allocations for each stage. Advanced users can customise as they see fit. The countdown begins, with built-in reminders at 50%, 30 minutes, and 5 minutes remaining of each stage, helping teams pace themselves without burning out.and helping teams stay agile, focused, and goal-aligned.
 
-### `npm start`
+<video src="https://github.com/user-attachments/assets/788e3994-be79-4afc-b07d-29538a9c9f60" height="100" controls></video>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Implementation
+We decided to build hacktrack as a purely frontend application using React. We opted not to include a backend or database to keep the tool lightweight and easy to use during fast-paced hackathons as the current version does not require persistent user data.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Users input their total available time, and hacktrack calculates and displays recommended time allocations across seven structured stages. These default values, stage descriptions, and actionable tips are stored in a JSON file for modularity and easy iteration.
 
-### `npm test`
+Time input is counted in hours (e.g. 5 hours), and each phase is allocated a percentage (e.g. 0.1 for 10%). We formatted the countdown timer and range inputs to convert an integer into intuitive hours, minutes, and seconds for both the UI and timers.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To visualise time spent and remaining, we used CountdownCircleTimer, a React library that provided a clear, circular timer interface. To trigger start and end sounds for each phase, we made use of the useSound package This offers both visual and auditory feedback.
 
-### `npm run build`
+As we plan to introduce the Performance Journal, we look to implement a backend with a database to support user accounts, session data, and analytics. This will enable future features such as time-spent tracking, team retrospectives, and growth insights across hackathons.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
