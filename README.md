@@ -8,6 +8,8 @@ Enter hacktrack – your smart hackathon guide.
 
 hacktrack is a lightweight time coach built specifically for hackathon teams. Users input their total available time, and hacktrack intelligently suggests time allocations for each stage. Advanced users can customise as they see fit. The countdown begins, with built-in reminders at 50%, 30 minutes, and 5 minutes remaining of each stage, helping teams pace themselves without burning out.and helping teams stay agile, focused, and goal-aligned.
 
+Have a play around yourself [here.](https://hack-track.netlify.app/)
+
 <video src="https://github.com/user-attachments/assets/788e3994-be79-4afc-b07d-29538a9c9f60" height="100" controls></video>
 
 ### Implementation
